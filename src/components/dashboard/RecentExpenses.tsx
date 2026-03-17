@@ -27,7 +27,7 @@ export function RecentExpenses({ expenses }: RecentExpensesProps) {
             <div key={expense.id} className="flex items-center justify-between gap-2">
               <div className="flex flex-col gap-0.5 min-w-0">
                 <span className="truncate text-sm font-medium">{expense.description}</span>
-                <Badge variant="secondary" className="w-fit text-xs">
+                <Badge variant="secondary" className="w-fit text-xs mt-2">
                   {expense.category}
                 </Badge>
               </div>

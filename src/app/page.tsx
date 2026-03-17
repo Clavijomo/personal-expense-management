@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { ExpenseChart } from "@/components/dashboard/ExpenseChart";
+import { ExpensePieChart } from "@/components/dashboard/ExpensePieChart";
 import { RecentExpenses } from "@/components/dashboard/RecentExpenses";
 import { ExpenseFormModal } from "@/components/shared/ExpenseFormModal";
 import { useDashboardMetrics } from "@/hooks/useDashboardMetrics";
@@ -25,7 +26,7 @@ export default function DashboardPage() {
   if (!hydrated) return <LoadingSpinner />;
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8">
+    <main className="mx-auto max-w-7xl px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">Dashboard</h1>
         <Button onClick={() => { setModalKey((k) => k + 1); setModalOpen(true); }}>+ Agregar gasto</Button>
@@ -58,6 +59,10 @@ export default function DashboardPage() {
         <div>
           <RecentExpenses expenses={expenses} />
         </div>
+      </section>
+
+      <section className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <ExpensePieChart expenses={expenses} />
       </section>
 
       <div className="mt-6 flex justify-end">

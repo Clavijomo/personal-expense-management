@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { useExpenseForm } from "@/hooks/useExpenseForm";
 import { Expense, CATEGORIES } from "@/types/expense";
+import { useEffect } from "react";
 
 interface ExpenseFormModalProps {
   open: boolean;
@@ -38,6 +39,10 @@ export function ExpenseFormModal({
     control,
     formState: { errors },
   } = form;
+
+  useEffect(() => {
+    console.log(expense);
+  }, [expense])
 
   return (
     <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
