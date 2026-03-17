@@ -22,8 +22,8 @@ export interface Expense {
   description: string;
   amount: number;
   category: Category;
-  date: string; // ISO format: "YYYY-MM-DD"
-  createdAt: string; // ISO datetime for tie-breaking sort
+  date: string;
+  createdAt: string;
 }
 
 export interface ExpenseFilters {
