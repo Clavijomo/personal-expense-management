@@ -8,6 +8,9 @@ import { RecentExpenses } from "@/components/dashboard/RecentExpenses";
 import { ExpenseFormModal } from "@/components/shared/ExpenseFormModal";
 import { useDashboardMetrics } from "@/hooks/useDashboardMetrics";
 import { useExpenseStore } from "@/store/useExpenseStore";
+import { useHydration } from "@/hooks/useHydration";
+import { LoadingSpinner } from "@/components/shared/LoadingSpinner";
+import { ErrorState } from "@/components/shared/ErrorState";
 import { useState } from "react";
 
 export default function DashboardPage() {
@@ -16,6 +19,10 @@ export default function DashboardPage() {
   const { expenses } = useExpenseStore();
   const { totalSpent, dailyAverage, topCategory, transactionCount } =
     useDashboardMetrics();
+  const { hydrated, error } = useHydration();
+
+  if (error) return <ErrorState message={error} />;
+  if (!hydrated) return <LoadingSpinner />;
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-8">
