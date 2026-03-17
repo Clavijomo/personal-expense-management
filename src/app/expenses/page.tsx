@@ -18,17 +18,20 @@ const DEFAULT_FILTERS: Filters = {
 export default function ExpensesPage() {
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalKey, setModalKey] = useState(0);
   const [selectedExpense, setSelectedExpense] = useState<Expense | undefined>();
 
   const { paginated, deleteExpense } = useExpenses(filters);
 
   const handleEdit = (expense: Expense) => {
     setSelectedExpense(expense);
+    setModalKey((k) => k + 1);
     setModalOpen(true);
   };
 
   const handleAdd = () => {
     setSelectedExpense(undefined);
+    setModalKey((k) => k + 1);
     setModalOpen(true);
   };
 
@@ -55,6 +58,7 @@ export default function ExpensesPage() {
       />
 
       <ExpenseFormModal
+        key={modalKey}
         open={modalOpen}
         onClose={handleClose}
         expense={selectedExpense}
