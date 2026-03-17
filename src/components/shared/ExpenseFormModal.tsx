@@ -101,7 +101,7 @@ export function ExpenseFormModal({
               name="category"
               control={control}
               render={({ field }) => (
-                <Select onValueChange={field.onChange} value={field.value}>
+                <Select onValueChange={field.onChange} value={field.value ?? ""}>
                   <SelectTrigger id="category" className="w-full">
                     <SelectValue placeholder="Selecciona una categoría" />
                   </SelectTrigger>
@@ -121,7 +121,7 @@ export function ExpenseFormModal({
           </div>
 
           <div className="flex justify-end gap-2 pt-2">
-            <Button type="button" variant="outline" onClick={onClose}>
+            <Button type="button" variant="ghost" onClick={onClose}>
               Cancelar
             </Button>
             <Button type="submit">
