@@ -1,16 +1,15 @@
 "use client";
 
-import { Controller } from "react-hook-form";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -19,8 +18,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useExpenseForm } from "@/hooks/useExpenseForm";
-import { Expense, CATEGORIES } from "@/types/expense";
-import { useEffect } from "react";
+import { CATEGORIES, Expense } from "@/types/expense";
+import { Controller } from "react-hook-form";
 
 interface ExpenseFormModalProps {
   open: boolean;
@@ -39,10 +38,6 @@ export function ExpenseFormModal({
     control,
     formState: { errors },
   } = form;
-
-  useEffect(() => {
-    console.log(expense);
-  }, [expense])
 
   return (
     <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
