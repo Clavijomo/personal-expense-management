@@ -1,5 +1,7 @@
 # Personal Expense Management
 
+**Live demo:** [https://expensepersonaltracker.netlify.app](https://expensepersonaltracker.netlify.app)
+
 A web application for personal expense tracking built as a Frontend technical assessment. It allows users to create, edit, filter, and visualize expenses with persistence via localStorage.
 
 ## Tech Stack
