@@ -26,9 +26,20 @@ export default function DashboardPage() {
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-8">
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 md:flex items-center space-y-4 sm:justify-center md:justify-between">
         <h1 className="text-2xl font-semibold">Dashboard</h1>
-        <Button onClick={() => { setModalKey((k) => k + 1); setModalOpen(true); }}>+ Agregar gasto</Button>
+        <div className="flex items-center gap-3">
+          <Button
+            onClick={() => { setModalKey((k) => k + 1); setModalOpen(true) }}>
+            + Agregar gasto
+          </Button>
+          <Link
+            href="/expenses"
+            className="inline-flex h-9 items-center rounded-md border border-input bg-background px-4 text-sm font-medium shadow-xs hover:bg-accent hover:text-accent-foreground"
+          >
+            Ver todos los gastos
+          </Link>
+        </div>
       </div>
 
       <section className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -63,15 +74,6 @@ export default function DashboardPage() {
       <section className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <ExpensePieChart expenses={expenses} />
       </section>
-
-      <div className="mt-6 flex justify-end">
-        <Link
-          href="/expenses"
-          className="inline-flex h-9 items-center rounded-md border border-input bg-background px-4 text-sm font-medium shadow-xs hover:bg-accent hover:text-accent-foreground"
-        >
-          Ver todos los gastos
-        </Link>
-      </div>
 
       <ExpenseFormModal
         key={modalKey}

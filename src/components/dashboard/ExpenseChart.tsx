@@ -53,7 +53,7 @@ export function ExpenseChart({ expenses }: ExpenseChartProps) {
       <CardContent>
         <ResponsiveContainer width="100%" height={250}>
           <BarChart data={chartData} margin={{ top: 4, right: 8, left: 0, bottom: 4 }}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" vertical={true} />
             <XAxis
               dataKey="category"
               tick={{ fontSize: 12 }}
@@ -70,7 +70,7 @@ export function ExpenseChart({ expenses }: ExpenseChartProps) {
               formatter={(value) => [`$${Number(value).toFixed(2)}`, "Total"]}
               cursor={{ fill: "hsl(var(--muted))" }}
             />
-            <Bar dataKey="total" fill="hsl(var(--foreground))" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="total" fill="hsl(var(--foreground))" radius={[20, 20, 10, 10]} />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>
