@@ -22,8 +22,14 @@ interface ExpenseTableProps {
 export function ExpenseTable({ expenses, onEdit, onDelete }: ExpenseTableProps) {
   if (expenses.length === 0) {
     return (
-      <div className="flex items-center justify-center py-16 text-muted-foreground">
+      <div className="flex flex-col items-center justify-center py-16 text-muted-foreground">
         <p className="text-sm">No se encontraron gastos.</p>
+        <Link
+          href="/"
+          className="inline-flex h-9 items-center rounded-md border border-input bg-background px-4 text-sm font-medium shadow-xs hover:bg-accent hover:text-accent-foreground mt-5"
+        >
+          Volver al Dashboard
+        </Link>
       </div>
     );
   }
