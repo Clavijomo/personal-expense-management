@@ -41,9 +41,9 @@ export function ExpenseFormModal({
 
   return (
     <Dialog open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle>
+          <DialogTitle className={'font-semibold text-xl'}>
             {expense ? "Editar gasto" : "Nuevo gasto"}
           </DialogTitle>
           <DialogDescription>
@@ -68,13 +68,13 @@ export function ExpenseFormModal({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1">
-              <Label htmlFor="amount">Monto</Label>
+              <Label htmlFor="amount">Monto ($)</Label>
               <Input
                 id="amount"
                 type="number"
                 step="0.01"
                 min="0"
-                placeholder="0.00"
+                placeholder="0.00 COP"
                 {...register("amount", { valueAsNumber: true })}
               />
               {errors.amount && (
@@ -96,7 +96,7 @@ export function ExpenseFormModal({
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="category">Categoría</Label>
+            <Label className="mb-3" htmlFor="category">Categoría</Label>
             <Controller
               name="category"
               control={control}
