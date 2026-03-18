@@ -26,9 +26,9 @@ export function useDashboardMetrics() {
       {}
     );
 
-    const topCategory = (Object.entries(byCategory).sort(
-      ([, a], [, b]) => b - a
-    )[0]?.[0] ?? "—") as Category | "—";
+    const entries = Object.entries(byCategory);
+    const sorted = entries.sort((a, b) => b[1] - a[1]);
+    const topCategory = (sorted[0]?.[0] ?? "—") as Category | "—";
 
     const transactionCount = monthlyExpenses.length;
 
