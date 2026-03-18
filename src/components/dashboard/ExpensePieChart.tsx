@@ -1,6 +1,8 @@
 "use client";
 
-import { PieChart, Pie, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from "recharts";
+
+const COLORS = ["#1d4ed8", "#b45309", "#15803d", "#7c3aed", "#be123c", "#0e7490", "#a16207", "#9f1239"];
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Expense } from "@/types/expense";
 
@@ -67,8 +69,11 @@ export function ExpensePieChart({ expenses }: ExpensePieChartProps) {
               innerRadius={50}
               outerRadius={80}
               dataKey="value"
-              fill="#18181b"
-            />
+            >
+              {innerData.map((_, index) => (
+                <Cell key={index} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
             <Pie
               data={outerData}
               cx="50%"
@@ -76,8 +81,11 @@ export function ExpensePieChart({ expenses }: ExpensePieChartProps) {
               innerRadius={90}
               outerRadius={110}
               dataKey="value"
-              fill="#71717a"
-            />
+            >
+              {outerData.map((_, index) => (
+                <Cell key={index} fill={COLORS[index % COLORS.length]} opacity={0.6} />
+              ))}
+            </Pie>
             <Tooltip formatter={(value, name, props) => {
               const unit = (props.payload as { unit?: string })?.unit;
               return unit === "count"

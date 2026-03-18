@@ -3,12 +3,15 @@
 import {
   BarChart,
   Bar,
+  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+
+const COLORS = ["#1d4ed8", "#b45309", "#15803d", "#7c3aed", "#be123c", "#0e7490", "#a16207", "#9f1239"];
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Expense } from "@/types/expense";
 
@@ -68,9 +71,13 @@ export function ExpenseChart({ expenses }: ExpenseChartProps) {
             />
             <Tooltip
               formatter={(value) => [`$${Number(value).toFixed(2)}`, "Total"]}
-              cursor={{ fill: "hsl(var(--muted))" }}
+              cursor={false}
             />
-            <Bar dataKey="total" fill="hsl(var(--foreground))" radius={[20, 20, 10, 10]} />
+            <Bar dataKey="total" radius={[20, 20, 10, 10]}>
+              {chartData.map((_, index) => (
+                <Cell key={index} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </CardContent>
