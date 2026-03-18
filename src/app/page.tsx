@@ -18,8 +18,7 @@ export default function DashboardPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalKey, setModalKey] = useState(0);
   const { expenses } = useExpenseStore();
-  const { totalSpent, dailyAverage, topCategory, transactionCount } =
-    useDashboardMetrics();
+  const { totalSpent, dailyAverage, topCategory, transactionCount } = useDashboardMetrics();
   const { hydrated, error } = useHydration();
 
   if (error) return <ErrorState message={error} />;
